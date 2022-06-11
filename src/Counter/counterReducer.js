@@ -1,14 +1,18 @@
-import { Counter_dec, Counter_inc } from "./action";
+import { Count_Dec, Count_Int } from "./actionType";
 
-export const counterReducer=(state={count:0},{type,payLoad})=>{
+const init={
+    count:0
+}
+
+export const countReducer=(state=init,{type,payLoad})=>{
 switch(type){
-    case Counter_inc:{
-        state.count++;
-        return {...state}
+    case Count_Int:{
+        state.count=state.count+payLoad;
+        return {...state};
     }
-    case Counter_dec:{
-        state.count--;
-        return {...state}
+    case Count_Dec:{
+        state.count=state.count-payLoad;
+        return {...state};
     }
     default:{
         return state;
